@@ -1,0 +1,3908 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Miro API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.miro.com/v1"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "oauth2",
+        "flows": {}
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "paths": {
+    "/boards": {
+      "get": {
+        "summary": "Create Board",
+        "description": "",
+        "operationId": "create-board",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name for the board that you are creating. The board name can have up to 60 characters.</br>Default: `Untitled`",
+                    "default": "Untitled"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "sharingPolicy": {
+                    "type": "string",
+                    "description": "**sharingPolicy.access** can be `private`, `view`, `comment` </br> **sharingPolicy.teamAccess** can be `private`, `view`, `comment`, `edit`",
+                    "default": "{ \"access\" : \"private\",  \"teamAccess\" : \"private\" }",
+                    "format": "json"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Created": {
+                    "value": "{\n    \"type\": \"board\",\n    \"viewLink\": \"https://miro.com/app/board/o9J_k0jX30s=\",\n    \"id\": \"o9J_k0jX30s=\",\n    \"name\": \"Untitled\",\n    \"description\": \"\",\n    \"picture\": null,\n    \"currentUserConnection\": {\n        \"type\": \"board-user-connection\",\n        \"role\": \"owner\",\n        \"user\": {\n            \"type\": \"user\",\n            \"name\": \"Sergey\",\n            \"id\": \"3074457345710988604\"\n        },\n        \"id\": \"3074457345710990608\"\n    },\n    \"owner\": {\n        \"type\": \"user\",\n        \"name\": \"Sergey\",\n        \"id\": \"3074457345710988604\"\n    },\n    \"sharingPolicy\": {\n        \"access\": \"PRIVATE\",\n        \"teamAccess\": \"PRIVATE\"\n    },\n    \"modifiedAt\": \"2018-03-14T12:09:55Z\",\n    \"modifiedBy\": {\n        \"type\": \"user\",\n        \"name\": \"Sergey\",\n        \"id\": \"3074457345710988604\"\n    },\n    \"createdAt\": \"2018-03-14T12:09:55Z\",\n    \"createdBy\": {\n        \"type\": \"user\",\n        \"name\": \"Sergey\",\n        \"id\": \"3074457345710988604\"\n    }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "board"
+                    },
+                    "viewLink": {
+                      "type": "string",
+                      "example": "https://miro.com/app/board/o9J_k0jX30s="
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "o9J_k0jX30s="
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Untitled"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "picture": {},
+                    "currentUserConnection": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "board-user-connection"
+                        },
+                        "role": {
+                          "type": "string",
+                          "example": "owner"
+                        },
+                        "user": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "user"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Sergey"
+                            },
+                            "id": {
+                              "type": "string",
+                              "example": "3074457345710988604"
+                            }
+                          }
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345710990608"
+                        }
+                      }
+                    },
+                    "owner": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Sergey"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345710988604"
+                        }
+                      }
+                    },
+                    "sharingPolicy": {
+                      "type": "object",
+                      "properties": {
+                        "access": {
+                          "type": "string",
+                          "example": "PRIVATE"
+                        },
+                        "teamAccess": {
+                          "type": "string",
+                          "example": "PRIVATE"
+                        }
+                      }
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "example": "2018-03-14T12:09:55Z"
+                    },
+                    "modifiedBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Sergey"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345710988604"
+                        }
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2018-03-14T12:09:55Z"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Sergey"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345710988604"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/boards/{id}": {
+      "get": {
+        "summary": "Get Board",
+        "description": "",
+        "operationId": "get-board",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"board\",\n    \"viewLink\": \"https://miro.com/app/board/o9J_k0jX30s=\",\n    \"id\": \"o9J_k0jX30s=\",\n    \"name\": \"Untitled\",\n    \"description\": \"\",\n    \"picture\": null,\n    \"currentUserConnection\": {\n        \"type\": \"board-user-connection\",\n        \"role\": \"owner\",\n        \"user\": {\n            \"type\": \"user\",\n            \"name\": \"Sergey\",\n            \"id\": \"3074457345710988604\"\n        },\n        \"id\": \"3074457345710990608\"\n    },\n    \"owner\": {\n        \"type\": \"user\",\n        \"name\": \"Sergey\",\n        \"id\": \"3074457345710988604\"\n    },\n    \"sharingPolicy\": {\n        \"access\": \"PRIVATE\",\n        \"teamAccess\": \"PRIVATE\"\n    },\n    \"modifiedAt\": \"2018-03-14T12:09:55Z\",\n    \"modifiedBy\": {\n        \"type\": \"user\",\n        \"name\": \"Sergey\",\n        \"id\": \"3074457345710988604\"\n    }\n    \"createdAt\": \"2018-03-14T12:09:55Z\",\n    \"createdBy\": {\n        \"type\": \"user\",\n        \"name\": \"Sergey\",\n        \"id\": \"3074457345710988604\"\n    }\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "summary": "Update Board",
+        "description": "",
+        "operationId": "update-board",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "default": "Untitled"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "sharingPolicy": {
+                    "type": "string",
+                    "description": "**sharingPolicy.access** can be `private`, `view`, `comment` </br> **sharingPolicy.teamAccess** can be `private`, `view`, `comment`, `edit`",
+                    "default": "{ \"access\" : \"private\",  \"teamAccess\" : \"private\" }",
+                    "format": "json"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Created": {
+                    "value": "{\n    \"type\": \"board\",\n    \"viewLink\": \"https://miro.com/app/board/o9J_k0jX30s=\",\n    \"id\": \"o9J_k0jX30s=\",\n    \"name\": \"New name\",\n    \"description\": \"New description\",\n    \"picture\": null,\n    \"currentUserConnection\": {\n        \"type\": \"board-user-connection\",\n        \"role\": \"owner\",\n        \"user\": {\n            \"type\": \"user\",\n            \"name\": \"Sergey\",\n            \"id\": \"3074457345710988604\"\n        },\n        \"id\": \"3074457345710990608\"\n    },\n    \"owner\": {\n        \"type\": \"user\",\n        \"name\": \"Sergey\",\n        \"id\": \"3074457345710988604\"\n    },\n    \"sharingPolicy\": {\n        \"access\": \"PRIVATE\",\n        \"teamAccess\": \"PRIVATE\"\n    },\n    \"modifiedAt\": \"2018-03-14T12:09:55Z\",\n    \"modifiedBy\": {\n        \"type\": \"user\",\n        \"name\": \"Sergey\",\n        \"id\": \"3074457345710988604\"\n    },\n    \"createdAt\": \"2018-03-14T12:09:55Z\",\n    \"createdBy\": {\n        \"type\": \"user\",\n        \"name\": \"Sergey\",\n        \"id\": \"3074457345710988604\"\n    }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "board"
+                    },
+                    "viewLink": {
+                      "type": "string",
+                      "example": "https://miro.com/app/board/o9J_k0jX30s="
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "o9J_k0jX30s="
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "New name"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "New description"
+                    },
+                    "picture": {},
+                    "currentUserConnection": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "board-user-connection"
+                        },
+                        "role": {
+                          "type": "string",
+                          "example": "owner"
+                        },
+                        "user": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "user"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Sergey"
+                            },
+                            "id": {
+                              "type": "string",
+                              "example": "3074457345710988604"
+                            }
+                          }
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345710990608"
+                        }
+                      }
+                    },
+                    "owner": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Sergey"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345710988604"
+                        }
+                      }
+                    },
+                    "sharingPolicy": {
+                      "type": "object",
+                      "properties": {
+                        "access": {
+                          "type": "string",
+                          "example": "PRIVATE"
+                        },
+                        "teamAccess": {
+                          "type": "string",
+                          "example": "PRIVATE"
+                        }
+                      }
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "example": "2018-03-14T12:09:55Z"
+                    },
+                    "modifiedBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Sergey"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345710988604"
+                        }
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2018-03-14T12:09:55Z"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Sergey"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345710988604"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/boards/{id}/user-connections": {
+      "get": {
+        "summary": "Get Board members",
+        "description": "Retrieves a list of team members who have access to the selected board.",
+        "operationId": "get-board-user-connections",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"list\",\n    \"limit\": 10,\n    \"offset\": 0,\n    \"size\": 2,\n    \"data\": [\n        {\n            \"type\": \"board-user-connection\",\n            \"role\": \"owner\",\n            \"user\": {\n                \"type\": \"user\",\n                \"name\": \"Olga Stepanova\",\n                \"id\": \"3074457345618259608\"\n            },\n            \"modifiedAt\": \"2019-04-05T11:29:40Z\",\n            \"modifiedBy\": {\n                \"type\": \"user\",\n                \"name\": \"Olga Stepanova\",\n                \"id\": \"3074457345618259608\"\n            },\n            \"createdAt\": \"2019-04-01T12:58:08Z\",\n            \"createdBy\": {\n                \"type\": \"user\",\n                \"name\": \"Olga Stepanova\",\n                \"id\": \"3074457345618259608\"\n            },\n            \"id\": \"3074457345618259646\"\n        },\n        {\n            \"type\": \"board-user-connection\",\n            \"role\": \"commenter\",\n            \"user\": {\n                \"type\": \"user\",\n                \"name\": \"NoName\",\n                \"id\": \"3074457345618259609\"\n            },\n            \"modifiedAt\": \"2019-04-05T11:27:27Z\",\n            \"modifiedBy\": {\n                \"type\": \"user\",\n                \"name\": \"Olga Stepanova\",\n                \"id\": \"3074457345618259608\"\n            },\n            \"createdAt\": \"2019-04-05T11:26:13Z\",\n            \"createdBy\": {\n                \"type\": \"user\",\n                \"name\": \"Olga Stepanova\",\n                \"id\": \"3074457345618259608\"\n            },\n            \"id\": \"3074457345618283604\"\n        }\n    ],\n    \"nextLink\": null,\n    \"prevLink\": null\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "list"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "example": 10,
+                      "default": 0
+                    },
+                    "offset": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "size": {
+                      "type": "integer",
+                      "example": 2,
+                      "default": 0
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "board-user-connection"
+                          },
+                          "role": {
+                            "type": "string",
+                            "example": "owner"
+                          },
+                          "user": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Olga Stepanova"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345618259608"
+                              }
+                            }
+                          },
+                          "modifiedAt": {
+                            "type": "string",
+                            "example": "2019-04-05T11:29:40Z"
+                          },
+                          "modifiedBy": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Olga Stepanova"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345618259608"
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "example": "2019-04-01T12:58:08Z"
+                          },
+                          "createdBy": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Olga Stepanova"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345618259608"
+                              }
+                            }
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "3074457345618259646"
+                          }
+                        }
+                      }
+                    },
+                    "nextLink": {},
+                    "prevLink": {}
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/boards/{id}/share": {
+      "post": {
+        "summary": "Share Board",
+        "description": "",
+        "operationId": "share-board",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "emails",
+                  "role"
+                ],
+                "properties": {
+                  "emails": {
+                    "type": "array",
+                    "description": "Array of emails of users who you want to invite to the board. These users can be registered or non-registered.",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "role": {
+                    "type": "string",
+                    "description": "Value can be `viewer`, `commenter`, `editor`"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "The message which will be sent to users. This parameter is optional."
+                  },
+                  "teamInvitationStrategy": {
+                    "type": "string",
+                    "description": "Value can be `invite_when_required`, `off`. This parameter is optional. Value `off` will be used by default.",
+                    "default": "off"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"list\",\n    \"limit\": 10,\n    \"offset\": 0,\n    \"size\": 1,\n    \"data\": [\n        {\n            \"type\": \"board-user-connection\",\n            \"role\": \"commenter\",\n            \"user\": {\n                \"type\": \"user\",\n                \"name\": \"NoName\",\n                \"id\": \"3074457345618259609\"\n            },\n            \"modifiedAt\": \"2019-04-05T11:27:27Z\",\n            \"modifiedBy\": {\n                \"type\": \"user\",\n                \"name\": \"Olga Stepanova\",\n                \"id\": \"3074457345618259608\"\n            },\n            \"createdAt\": \"2019-04-05T11:26:13Z\",\n            \"createdBy\": {\n                \"type\": \"user\",\n                \"name\": \"Olga Stepanova\",\n                \"id\": \"3074457345618259608\"\n            },\n            \"id\": \"3074457345618283604\"\n        }\n    ],\n    \"nextLink\": null,\n    \"prevLink\": null\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "list"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "example": 10,
+                      "default": 0
+                    },
+                    "offset": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "size": {
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "board-user-connection"
+                          },
+                          "role": {
+                            "type": "string",
+                            "example": "commenter"
+                          },
+                          "user": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "NoName"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345618259609"
+                              }
+                            }
+                          },
+                          "modifiedAt": {
+                            "type": "string",
+                            "example": "2019-04-05T11:27:27Z"
+                          },
+                          "modifiedBy": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Olga Stepanova"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345618259608"
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "example": "2019-04-05T11:26:13Z"
+                          },
+                          "createdBy": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Olga Stepanova"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345618259608"
+                              }
+                            }
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "3074457345618283604"
+                          }
+                        }
+                      }
+                    },
+                    "nextLink": {},
+                    "prevLink": {}
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/teams/{id}/boards": {
+      "get": {
+        "summary": "Get Current User Boards",
+        "description": "",
+        "operationId": "get-team-boards",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"list\",\n    \"limit\": 100,\n    \"offset\": 0,\n    \"size\": 1,\n    \"nextLink\": null,\n    \"prevLink\": null,\n    \"data\": [\n        {\n            \"type\": \"board\",\n            \"viewLink\": \"https://miro.com/app/board/o9J_k0jX30s=\",\n            \"id\": \"o9J_k0jX30s=\",\n            \"name\": \"Untitled\",\n            \"description\": \"\",\n            \"picture\": null,\n            \"currentUserConnection\": {\n                \"type\": \"board-user-connection\",\n                \"role\": \"owner\",\n                \"user\": {\n                    \"type\": \"user\",\n                    \"name\": \"Sergey\",\n                    \"id\": \"3074457345710988604\"\n                },\n                \"id\": \"3074457345710990608\"\n            },\n            \"owner\": {\n                \"type\": \"user\",\n                \"name\": \"Sergey\",\n                \"id\": \"3074457345710988604\"\n            },\n            \"sharingPolicy\": {\n                \"access\": \"PRIVATE\",\n                \"teamAccess\": \"PRIVATE\"\n            },\n            \"modifiedAt\": \"2018-03-14T12:09:55Z\",\n            \"modifiedBy\": {\n                \"type\": \"user\",\n                \"name\": \"Sergey\",\n                \"id\": \"3074457345710988604\"\n            },\n            \"createdAt\": \"2018-03-14T12:09:55Z\",\n            \"createdBy\": {\n                \"type\": \"user\",\n                \"name\": \"Sergey\",\n                \"id\": \"3074457345710988604\"\n            }\n        }\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "list"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "example": 100,
+                      "default": 0
+                    },
+                    "offset": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "size": {
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "nextLink": {},
+                    "prevLink": {},
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "board"
+                          },
+                          "viewLink": {
+                            "type": "string",
+                            "example": "https://miro.com/app/board/o9J_k0jX30s="
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "o9J_k0jX30s="
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Untitled"
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "picture": {},
+                          "currentUserConnection": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "board-user-connection"
+                              },
+                              "role": {
+                                "type": "string",
+                                "example": "owner"
+                              },
+                              "user": {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "example": "user"
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "example": "Sergey"
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "example": "3074457345710988604"
+                                  }
+                                }
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345710990608"
+                              }
+                            }
+                          },
+                          "owner": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Sergey"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345710988604"
+                              }
+                            }
+                          },
+                          "sharingPolicy": {
+                            "type": "object",
+                            "properties": {
+                              "access": {
+                                "type": "string",
+                                "example": "PRIVATE"
+                              },
+                              "teamAccess": {
+                                "type": "string",
+                                "example": "PRIVATE"
+                              }
+                            }
+                          },
+                          "modifiedAt": {
+                            "type": "string",
+                            "example": "2018-03-14T12:09:55Z"
+                          },
+                          "modifiedBy": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Sergey"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345710988604"
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "example": "2018-03-14T12:09:55Z"
+                          },
+                          "createdBy": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Sergey"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345710988604"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/boards/{id}/widgets/{widgetId}": {
+      "get": {
+        "summary": "Get Widget",
+        "description": "",
+        "operationId": "get-widget",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "board id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "widgetId",
+            "in": "path",
+            "description": "widget id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"type\": \"card\",\n  \"scale\": 1.0,\n  \"y\": 0.0,\n  \"x\": 0.0,\n  \"id\": 3074457345618267604,\n  \"date\": \"2020-01-21\",\n  \"createdBy\": {\n    \"type\": \"user\",\n    \"name\": \"igor\",\n    \"id\": \"3074457345618258730\"\n  },\n  \"modifiedAt\": \"2019-04-10T08:14:25Z\",\n  \"modifiedBy\": {\n    \"type\": \"user\",\n    \"name\": \"igor\",\n    \"id\": \"3074457345618258730\"\n  },\n  \"createdAt\": \"2019-04-10T08:10:33Z\",\n  \"description\": \"Some description\",\n  \"style\": {\n    \"backgroundColor\": \"#0000ff\"\n  },\n  \"title\": \"Card title\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "card"
+                    },
+                    "scale": {
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "y": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "x": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "id": {
+                      "type": "integer",
+                      "example": 3074457345618267600,
+                      "default": 0
+                    },
+                    "date": {
+                      "type": "string",
+                      "example": "2020-01-21"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "igor"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618258730"
+                        }
+                      }
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "example": "2019-04-10T08:14:25Z"
+                    },
+                    "modifiedBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "igor"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618258730"
+                        }
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2019-04-10T08:10:33Z"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Some description"
+                    },
+                    "style": {
+                      "type": "object",
+                      "properties": {
+                        "backgroundColor": {
+                          "type": "string",
+                          "example": "#0000ff"
+                        }
+                      }
+                    },
+                    "title": {
+                      "type": "string",
+                      "example": "Card title"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "summary": "Update Widget",
+        "description": "",
+        "operationId": "update-widget",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "board id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "widgetId",
+            "in": "path",
+            "description": "widget id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "RAW_BODY": {
+                    "type": "string",
+                    "description": "Partial widget representation",
+                    "format": "json"
+                  }
+                }
+              },
+              "examples": {
+                "Request Example": {
+                  "value": {
+                    "title": "new title",
+                    "assignee": null,
+                    "style": {
+                      "backgroundColor": "#0000ff"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"type\": \"card\",\n  \"scale\": 1.0,\n  \"y\": 0.0,\n  \"x\": 0.0,\n  \"id\": 3074457345618267604,\n  \"createdBy\": {\n    \"type\": \"user\",\n    \"name\": \"igor\",\n    \"id\": \"3074457345618258730\"\n  },\n  \"modifiedAt\": \"2019-04-10T08:14:25Z\",\n  \"modifiedBy\": {\n    \"type\": \"user\",\n    \"name\": \"igor\",\n    \"id\": \"3074457345618258730\"\n  },\n  \"createdAt\": \"2019-04-10T08:10:33Z\",\n  \"date\": \"2020-01-21\",\n  \"description\": \"some awesome description\",\n  \"style\": {\n    \"backgroundColor\": \"#0000ff\"\n  },\n  \"title\": \"new title\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "card"
+                    },
+                    "scale": {
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "y": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "x": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "id": {
+                      "type": "integer",
+                      "example": 3074457345618267600,
+                      "default": 0
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "igor"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618258730"
+                        }
+                      }
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "example": "2019-04-10T08:14:25Z"
+                    },
+                    "modifiedBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "igor"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618258730"
+                        }
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2019-04-10T08:10:33Z"
+                    },
+                    "date": {
+                      "type": "string",
+                      "example": "2020-01-21"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "some awesome description"
+                    },
+                    "style": {
+                      "type": "object",
+                      "properties": {
+                        "backgroundColor": {
+                          "type": "string",
+                          "example": "#0000ff"
+                        }
+                      }
+                    },
+                    "title": {
+                      "type": "string",
+                      "example": "new title"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "summary": "Delete Widgets",
+        "description": "",
+        "operationId": "delete-widgets",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "board id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "widgetId",
+            "in": "path",
+            "description": "widget id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/boards/{id}/widgets": {
+      "post": {
+        "summary": "Create Widget",
+        "description": "",
+        "operationId": "create-widget",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "board id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "RAW_BODY": {
+                    "type": "string",
+                    "description": "widget representation, paste json from the example to try",
+                    "default": "{   \"type\": \"card\",   \"title\": \"Simple card\" }",
+                    "format": "json"
+                  }
+                }
+              },
+              "examples": {
+                "Request Example": {
+                  "value": {
+                    "type": "card",
+                    "title": "developer card",
+                    "style": {
+                      "backgroundColor": "#ff00ff"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"type\": \"card\",\n  \"scale\": 1.0,\n  \"y\": 0.0,\n  \"x\": 0.0,\n  \"id\": 3074457345618267604,\n  \"date\": \"2020-01-21\",\n  \"title\": \"developer card\",\n  \"style\": {\n    \"backgroundColor\": \"#ff00ff\"\n  },\n  \"createdAt\": \"2019-04-10T08:10:33Z\",\n  \"createdBy\": {\n    \"type\": \"user\",\n    \"name\": \"igor\",\n    \"id\": \"3074457345618258730\"\n  },\n  \"modifiedAt\": \"2019-04-10T08:10:33Z\",\n  \"modifiedBy\": {\n    \"type\": \"user\",\n    \"name\": \"igor\",\n    \"id\": \"3074457345618258730\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "card"
+                    },
+                    "scale": {
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "y": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "x": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "id": {
+                      "type": "integer",
+                      "example": 3074457345618267600,
+                      "default": 0
+                    },
+                    "date": {
+                      "type": "string",
+                      "example": "2020-01-21"
+                    },
+                    "title": {
+                      "type": "string",
+                      "example": "developer card"
+                    },
+                    "style": {
+                      "type": "object",
+                      "properties": {
+                        "backgroundColor": {
+                          "type": "string",
+                          "example": "#ff00ff"
+                        }
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2019-04-10T08:10:33Z"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "igor"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618258730"
+                        }
+                      }
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "example": "2019-04-10T08:10:33Z"
+                    },
+                    "modifiedBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "igor"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618258730"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/board-user-connections/{id}": {
+      "get": {
+        "summary": "Get Board User Connection",
+        "description": "",
+        "operationId": "get-board-user-connection",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"board-user-connection\",\n    \"role\": \"owner\",\n    \"user\": {\n        \"type\": \"user\",\n        \"name\": \"Olga Stepanova\",\n        \"id\": \"3074457345618259608\"\n    },\n    \"modifiedAt\": \"2019-04-23T12:02:01Z\",\n    \"modifiedBy\": {\n        \"type\": \"user\",\n        \"name\": \"Olga Stepanova\",\n        \"id\": \"3074457345618259608\"\n    },\n    \"createdAt\": \"2019-04-23T12:02:01Z\",\n    \"createdBy\": {\n        \"type\": \"user\",\n        \"name\": \"Olga Stepanova\",\n        \"id\": \"3074457345618259608\"\n    },\n    \"id\": \"3074457345618311610\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "board-user-connection"
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "owner"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Olga Stepanova"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618259608"
+                        }
+                      }
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "example": "2019-04-23T12:02:01Z"
+                    },
+                    "modifiedBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Olga Stepanova"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618259608"
+                        }
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2019-04-23T12:02:01Z"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Olga Stepanova"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618259608"
+                        }
+                      }
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "3074457345618311610"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "summary": "Update Board User Connection",
+        "description": "",
+        "operationId": "update-board-user-connection",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "role": {
+                    "type": "string",
+                    "description": "Value can be ```viewer```, ```commenter```, ```editor```, ```owner```"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"board-user-connection\",\n    \"role\": \"viewer\",\n    \"user\": {\n        \"type\": \"user\",\n        \"name\": \"Olga Stepanova\",\n        \"id\": \"3074457345618259608\"\n    },\n    \"modifiedAt\": \"2019-04-23T12:02:01Z\",\n    \"modifiedBy\": {\n        \"type\": \"user\",\n        \"name\": \"Olga Stepanova\",\n        \"id\": \"3074457345618259608\"\n    },\n    \"createdAt\": \"2019-04-23T12:02:01Z\",\n    \"createdBy\": {\n        \"type\": \"user\",\n        \"name\": \"Olga Stepanova\",\n        \"id\": \"3074457345618259608\"\n    },\n    \"id\": \"3074457345618311610\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "board-user-connection"
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "viewer"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Olga Stepanova"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618259608"
+                        }
+                      }
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "example": "2019-04-23T12:02:01Z"
+                    },
+                    "modifiedBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Olga Stepanova"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618259608"
+                        }
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2019-04-23T12:02:01Z"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Olga Stepanova"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618259608"
+                        }
+                      }
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "3074457345618311610"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "summary": "Delete Board User Connection",
+        "description": "",
+        "operationId": "delete-board-user-connection",
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/teams/{id}": {
+      "get": {
+        "summary": "Get Team",
+        "description": "",
+        "operationId": "get-team",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"team\",\n    \"picture\": null,\n    \"name\": \"Dev team\",\n    \"modifiedBy\": {\n        \"type\": \"user\",\n        \"name\": \"Olga Stepanova\",\n        \"id\": \"307445675567256708\"\n    },\n    \"modifiedAt\": \"2019-04-23T11:59:53Z\",\n    \"createdAt\": \"2019-04-23T11:59:53Z\",\n    \"createdBy\": {\n        \"type\": \"user\",\n        \"name\": \"Olga Stepanova\",\n        \"id\": \"307445675567256708\"\n    },\n    \"id\": \"307445736561576709\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "team"
+                    },
+                    "picture": {},
+                    "name": {
+                      "type": "string",
+                      "example": "Dev team"
+                    },
+                    "modifiedBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Olga Stepanova"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "307445675567256708"
+                        }
+                      }
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "example": "2019-04-23T11:59:53Z"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2019-04-23T11:59:53Z"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Olga Stepanova"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "307445675567256708"
+                        }
+                      }
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "307445736561576709"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "summary": "Update Team",
+        "description": "",
+        "operationId": "update-team",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"team\",\n    \"picture\": null,\n    \"name\": \"New team name\",\n    \"modifiedBy\": {\n        \"type\": \"user\",\n        \"name\": \"Olga Stepanova\",\n        \"id\": \"3074457345618259608\"\n    },\n    \"modifiedAt\": \"2019-04-23T11:59:53Z\",\n    \"createdAt\": \"2019-04-23T11:59:53Z\",\n    \"createdBy\": {\n        \"type\": \"user\",\n        \"name\": \"Olga Stepanova\",\n        \"id\": \"3074457345618259608\"\n    },\n    \"id\": \"3074457345618259609\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "team"
+                    },
+                    "picture": {},
+                    "name": {
+                      "type": "string",
+                      "example": "New team name"
+                    },
+                    "modifiedBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Olga Stepanova"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618259608"
+                        }
+                      }
+                    },
+                    "modifiedAt": {
+                      "type": "string",
+                      "example": "2019-04-23T11:59:53Z"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2019-04-23T11:59:53Z"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Olga Stepanova"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345618259608"
+                        }
+                      }
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "3074457345618259609"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/teams/{id}/user-connections": {
+      "get": {
+        "summary": "List all Team Members",
+        "description": "",
+        "operationId": "list-all-team-members",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"list\",\n    \"limit\": 10,\n    \"offset\": 0,\n    \"size\": 1,\n    \"nextLink\": null,\n    \"prevLink\": null,\n    \"data\": [\n      {\n        \"type\": \"team-user-connection\",\n        \"user\": {\n          \"type\": \"user\",\n          \"name\": \"Sergey\",\n          \"id\": \"3074457345710988604\"\n        },\n        \"role\": \"admin\",\n        \"id\": \"3074457345710988607\"\n      }\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "list"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "example": 10,
+                      "default": 0
+                    },
+                    "offset": {
+                      "type": "integer",
+                      "example": 0,
+                      "default": 0
+                    },
+                    "size": {
+                      "type": "integer",
+                      "example": 1,
+                      "default": 0
+                    },
+                    "nextLink": {},
+                    "prevLink": {},
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "team-user-connection"
+                          },
+                          "user": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "Sergey"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345710988604"
+                              }
+                            }
+                          },
+                          "role": {
+                            "type": "string",
+                            "example": "admin"
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "3074457345710988607"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/teams/{id}/user-connections/me": {
+      "get": {
+        "summary": "Get Team Current User Connection",
+        "description": "",
+        "operationId": "get-team-current-user-connection",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Team ID",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"team-user-connection\",\n    \"user\": {\n      \"type\": \"user\",\n      \"name\": \"Dampe\",\n      \"id\": \"3018293920394059205\"\n    },\n    \"role\": \"member\",\n    \"id\": \"3085698452132154612\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "team-user-connection"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Dampe"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3018293920394059205"
+                        }
+                      }
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "member"
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "3085698452132154612"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/teams/{id}/invite": {
+      "post": {
+        "summary": "Invite To Team",
+        "description": "",
+        "operationId": "invite-to-team",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "emails": {
+                    "type": "array",
+                    "description": "Array of emails",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "[\n  {\n    \"type\": \"team-user-connection\",\n    \"user\": {\n      \"type\": \"user\",\n      \"name\": \"Sergey\",\n      \"id\": \"3074457345710988604\"\n    },\n    \"role\": \"admin\",\n    \"id\": \"3074457345710988607\"\n  }\n]"
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "example": "team-user-connection"
+                      },
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "user"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Sergey"
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "3074457345710988604"
+                          }
+                        }
+                      },
+                      "role": {
+                        "type": "string",
+                        "example": "admin"
+                      },
+                      "id": {
+                        "type": "string",
+                        "example": "3074457345710988607"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/team-user-connections/{id}": {
+      "get": {
+        "summary": "Get Team User Connection",
+        "description": "",
+        "operationId": "get-team-user-connection",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"team-user-connection\",\n    \"user\": {\n      \"type\": \"user\",\n      \"name\": \"Sergey\",\n      \"id\": \"3074457345710988604\"\n    },\n    \"role\": \"admin\",\n    \"id\": \"3074457345710988607\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "team-user-connection"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Sergey"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345710988604"
+                        }
+                      }
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "admin"
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "3074457345710988607"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "summary": "Update Team User Connection",
+        "description": "",
+        "operationId": "update-team-user-connection",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "role": {
+                    "type": "string",
+                    "description": "Values can be `non_team`,`member` or `admin`"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"team-user-connection\",\n    \"user\": {\n      \"type\": \"user\",\n      \"name\": \"Sergey\",\n      \"id\": \"3074457345710988604\"\n    },\n    \"role\": \"admin\",\n    \"id\": \"3074457345710988607\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "team-user-connection"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Sergey"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457345710988604"
+                        }
+                      }
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "admin"
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "3074457345710988607"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "summary": "Delete Team User Connection",
+        "description": "",
+        "operationId": "delete-team-user-connection",
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Get User",
+        "description": "",
+        "operationId": "get-user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"user\",\n    \"role\": \"developer\",\n    \"email\": \"user@miro.com\",\n    \"industry\": \"software_development\",\n    \"createdAt\": \"2018-03-12T05:34:08Z\",\n    \"company\": \"Miro\",\n    \"picture\": {\n        \"type\": \"picture\",\n        \"imageUrl\": \"https://r.miro.com/4747478734/123687/32/45/1/size210.jpg\",\n        \"id\": \"3074498545646781157\"\n    },\n    \"name\": \"User Userovich\",\n    \"state\": \"registered\",\n    \"id\": \"3009852896039815271\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "user"
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "developer"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "user@miro.com"
+                    },
+                    "industry": {
+                      "type": "string",
+                      "example": "software_development"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2018-03-12T05:34:08Z"
+                    },
+                    "company": {
+                      "type": "string",
+                      "example": "Miro"
+                    },
+                    "picture": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "picture"
+                        },
+                        "imageUrl": {
+                          "type": "string",
+                          "example": "https://r.miro.com/4747478734/123687/32/45/1/size210.jpg"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074498545646781157"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "User Userovich"
+                    },
+                    "state": {
+                      "type": "string",
+                      "example": "registered"
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "3009852896039815271"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/users/me": {
+      "get": {
+        "summary": "Get Current User",
+        "description": "",
+        "operationId": "get-current-user",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"user\",\n    \"role\": \"developer\",\n    \"email\": \"user@miro.com\",\n    \"industry\": \"software_development\",\n    \"createdAt\": \"2018-03-12T05:34:08Z\",\n    \"company\": \"Miro\",\n    \"picture\": {\n        \"type\": \"picture\",\n        \"imageUrl\": \"https://r.miro.com/4747478734/123687/32/45/1/size210.jpg\",\n        \"id\": \"3074498545646781157\"\n    },\n    \"name\": \"User Userovich\",\n    \"state\": \"registered\",\n    \"id\": \"3009852896039815271\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "user"
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "developer"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "user@miro.com"
+                    },
+                    "industry": {
+                      "type": "string",
+                      "example": "software_development"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2018-03-12T05:34:08Z"
+                    },
+                    "company": {
+                      "type": "string",
+                      "example": "Miro"
+                    },
+                    "picture": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "picture"
+                        },
+                        "imageUrl": {
+                          "type": "string",
+                          "example": "https://r.miro.com/4747478734/123687/32/45/1/size210.jpg"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074498545646781157"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "User Userovich"
+                    },
+                    "state": {
+                      "type": "string",
+                      "example": "registered"
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "3009852896039815271"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "summary": "Update Current User",
+        "description": "",
+        "operationId": "update-current-user",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"user\",\n    \"role\": \"developer\",\n    \"email\": \"user@miro.com\",\n    \"industry\": \"software_development\",\n    \"createdAt\": \"2018-03-12T05:34:08Z\",\n    \"company\": \"Miro\",\n    \"picture\": {\n        \"type\": \"picture\",\n        \"imageUrl\": \"https://r.miro.com/4747478734/123687/32/45/1/size210.jpg\",\n        \"id\": \"3074498545646781157\"\n    },\n    \"name\": \"User Userovich\",\n    \"state\": \"registered\",\n    \"id\": \"3009852896039815271\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "user"
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "developer"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "user@miro.com"
+                    },
+                    "industry": {
+                      "type": "string",
+                      "example": "software_development"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2018-03-12T05:34:08Z"
+                    },
+                    "company": {
+                      "type": "string",
+                      "example": "Miro"
+                    },
+                    "picture": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "picture"
+                        },
+                        "imageUrl": {
+                          "type": "string",
+                          "example": "https://r.miro.com/4747478734/123687/32/45/1/size210.jpg"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074498545646781157"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "User Userovich"
+                    },
+                    "state": {
+                      "type": "string",
+                      "example": "registered"
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "3009852896039815271"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/{type}/{id}/picture": {
+      "get": {
+        "summary": "Get Picture",
+        "description": "",
+        "operationId": "get-picture",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Type of picture's parental object (must be one of ```boards```,```users```,```teams```)",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Identifier of picture's parental object ([User Object](#user-object), [Board Object](#board-object) or [Team Object](#account-object))",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "redirect",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "false"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Must be one of ```26```, ```44```, ```50```, ```140```, ```180```, ```210```, ```420```.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 210
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"picture\",\n    \"imageUrl\": \"https://r.miro.com/1234567890/0987654321/1234/4/1/size210.jpg\",\n    \"id\": \"3074345367401345438\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "picture"
+                    },
+                    "imageUrl": {
+                      "type": "string",
+                      "example": "https://r.miro.com/1234567890/0987654321/1234/4/1/size210.jpg"
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "3074345367401345438"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "summary": "Create or Update Picture",
+        "description": "",
+        "operationId": "create-or-update-picture",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Type of picture's parental object (must be one of ```boards```,```users```,```teams```)",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Identifier of picture's parental object ([User Object](ref:user-object), [Board Object](ref:board-object) or [Team Object](ref:team-object))",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Must be ```multipart/form-data```",
+            "schema": {
+              "type": "string",
+              "default": "multipart/form-data"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "image"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"type\": \"picture\",\n    \"imageUrl\": \"https://r.miro.com/1234567890/0987654321/1234/4/1/size210.jpg\",\n    \"id\": \"3074345367401345438\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "picture"
+                    },
+                    "imageUrl": {
+                      "type": "string",
+                      "example": "https://r.miro.com/1234567890/0987654321/1234/4/1/size210.jpg"
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "3074345367401345438"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "summary": "Delete Picture",
+        "description": "",
+        "operationId": "delete-picture",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Type of picture's parental object (must be one of ```boards```,```users```,```teams```)",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Identifier of picture's parental object ([User Object](ref:user-object), [Board Object](ref:board-object) or [Team Object](ref:team-object))",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/audit/logs": {
+      "get": {
+        "summary": "Get logs",
+        "description": "",
+        "operationId": "get-logs",
+        "parameters": [
+          {
+            "name": "createdAfter",
+            "in": "query",
+            "description": "yyyy-MM-ddThh:mm:ss.SSSZ",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "createdBefore",
+            "in": "query",
+            "description": "yyyy-MM-ddThh:mm:ss.SSSZ",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Max value is 500",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"type\": \"list\",\n  \"limit\": 10,\n  \"offset\": 0,\n  \"size\": 9158,\n  \"nextLink\": \"http://api.miro.com/v1/audit/logs?createdAfter=2018-10-10&createdBefore=2018-10-20&limit=10&offset=10\",\n  \"prevLink\": null,\n  \"data\": [\n    {\n      \"type\": \"event\",\n      \"event\": \"board_opened\",\n      \"details\": {\n        \"role\": \"OWNER\"\n      },\n      \"createdAt\": \"2018-10-19T23:59:45Z\",\n      \"createdBy\": {\n        \"type\": \"user\",\n        \"name\": \"Test\",\n        \"id\": \"3074457346235995512\",\n      },\n      \"object\": {\n        \"id\": \"3074457346235995523\",\n        \"name\": \"BoardName\"\n      },\n      \"context\": {\n        \"organization\": {\n          \"type\": \"organization\",\n          \"name\": \"CompanyName\",\n          \"id\": \"3074457345821140123\"\n        },\n        \"team\": {\n          \"type\": \"team\",\n          \"name\": \"TeamName\",\n          \"id\": \"3074457345710755694\"\n        },\n        \"ip\": \"10.10.10.10\"\n      },\n      \"id\": \"450256789\"\n    },\n    //...\n  ]\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/boards/{id}/widgets/": {
+      "get": {
+        "summary": "List All Widgets",
+        "description": "",
+        "operationId": "list-all-widgets-1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "widgetType",
+            "in": "query",
+            "description": "Filter widgets by type",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"type\": \"collection\",\n  \"data\": [\n    {\n      \"type\": \"sticker\",\n      \"scale\": 0.54,\n      \"y\": -131.5,\n      \"x\": 250.0,\n      \"text\": \"<p>t</p>\",\n      \"style\": {\n        \"backgroundColor\": \"#fff9b1\",\n        \"fontAutoSize\": true,\n        \"fontFamily\": \"OpenSans\",\n        \"fontSize\": 64.0,\n        \"lineHeight\": 1.36,\n        \"textAlign\": \"center\",\n        \"textAlignVertical\": \"middle\"\n      },\n      \"id\": 3074457345618258749,\n      \"createdBy\": {\n        \"type\": \"user\",\n        \"name\": \"igor\",\n        \"id\": \"3074457345618258730\"\n      },\n      \"modifiedAt\": \"2019-04-06T14:19:35Z\",\n      \"modifiedBy\": {\n        \"type\": \"user\",\n        \"name\": \"igor\",\n        \"id\": \"3074457345618258730\"\n      },\n      \"createdAt\": \"2019-04-06T14:17:04Z\"\n    },\n    {\n      \"type\": \"card\",\n      \"scale\": 1.0,\n      \"y\": -99.94,\n      \"x\": -138.0,\n      \"id\": 3074457345618266604,\n      \"date\": \"2020-01-21\",\n      \"createdBy\": {\n        \"type\": \"user\",\n        \"name\": \"igor\",\n        \"id\": \"3074457345618258730\"\n      },\n      \"modifiedAt\": \"2019-04-08T11:14:24Z\",\n      \"modifiedBy\": {\n        \"type\": \"user\",\n        \"name\": \"igor\",\n        \"id\": \"3074457345618258730\"\n      },\n      \"createdAt\": \"2019-04-08T11:13:09Z\",\n      \"style\": {\n        \"backgroundColor\": null\n      },\n      \"title\": \"created w/live update\"\n    }\n  ],\n  \"size\": 2\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "collection"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "sticker"
+                          },
+                          "scale": {
+                            "type": "number",
+                            "example": 0.54,
+                            "default": 0
+                          },
+                          "y": {
+                            "type": "number",
+                            "example": -131.5,
+                            "default": 0
+                          },
+                          "x": {
+                            "type": "integer",
+                            "example": 250,
+                            "default": 0
+                          },
+                          "text": {
+                            "type": "string",
+                            "example": "<p>t</p>"
+                          },
+                          "style": {
+                            "type": "object",
+                            "properties": {
+                              "backgroundColor": {
+                                "type": "string",
+                                "example": "#fff9b1"
+                              },
+                              "fontAutoSize": {
+                                "type": "boolean",
+                                "example": true,
+                                "default": true
+                              },
+                              "fontFamily": {
+                                "type": "string",
+                                "example": "OpenSans"
+                              },
+                              "fontSize": {
+                                "type": "integer",
+                                "example": 64,
+                                "default": 0
+                              },
+                              "lineHeight": {
+                                "type": "number",
+                                "example": 1.36,
+                                "default": 0
+                              },
+                              "textAlign": {
+                                "type": "string",
+                                "example": "center"
+                              },
+                              "textAlignVertical": {
+                                "type": "string",
+                                "example": "middle"
+                              }
+                            }
+                          },
+                          "id": {
+                            "type": "integer",
+                            "example": 3074457345618259000,
+                            "default": 0
+                          },
+                          "createdBy": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "igor"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345618258730"
+                              }
+                            }
+                          },
+                          "modifiedAt": {
+                            "type": "string",
+                            "example": "2019-04-06T14:19:35Z"
+                          },
+                          "modifiedBy": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "user"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "igor"
+                              },
+                              "id": {
+                                "type": "string",
+                                "example": "3074457345618258730"
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "example": "2019-04-06T14:17:04Z"
+                          }
+                        }
+                      }
+                    },
+                    "size": {
+                      "type": "integer",
+                      "example": 2,
+                      "default": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/oauth/token": {
+      "post": {
+        "summary": "Step 3: Exchange authorization code with access token",
+        "description": "",
+        "operationId": "exchange-authorization-code-with-access-token",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          },
+          {
+            "name": "grant_type",
+            "in": "query",
+            "description": "Always set the value for this parameter to `authorization_code`.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "authorization_code"
+            }
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "description": "The Client ID of the app that is requesting for user authorization. For information on how to obtain the client ID, see [Create authorization request link](ref:create-authorization-request-link)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "client_secret",
+            "in": "query",
+            "description": "App client secret. **The client secret must be kept confidential.**",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "description": "Paste the authorization code that was provided as the code parameter value in the redirect URI.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "description": "Paste the redirect URI. The URI must match the original redirect URI that was used when requesting the authorization (including slash at the end).",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Click to view the sample JSON response": {
+                    "value": "{\n  \"user_id\": \"3074457362577955221\",\n  \"expires_in\": 3599,\n  \"team_id\": \"3074457362577833142\",\n  \"access_token\": \"eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_o-P91OccaII0A63CDSK--x21xiI\",\n  \"scope\": \"boards:write boards:read\",\n  \"refresh_token\": \"eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_-PIBKmE9rzQuL3bUeAvUEGFEhLk\",\n  \"token_type\": \"bearer\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user_id": {
+                      "type": "string",
+                      "example": "3074457362577955221"
+                    },
+                    "expires_in": {
+                      "type": "integer",
+                      "example": 3599,
+                      "default": 0
+                    },
+                    "team_id": {
+                      "type": "string",
+                      "example": "3074457362577833142"
+                    },
+                    "access_token": {
+                      "type": "string",
+                      "example": "eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_o-P91OccaII0A63CDSK--x21xiI"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "boards:write boards:read"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "example": "eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_-PIBKmE9rzQuL3bUeAvUEGFEhLk"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "bearer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/oauth-token": {
+      "get": {
+        "summary": "Get access token context",
+        "description": "Get information about an access token, such as the token type, scopes, team, user, token creation date and time, and the user who created the token.",
+        "operationId": "get-access-token-context",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"type\": \"oAuthToken\",\n  \"team\": {\n    \"type\": \"team\",\n    \"name\": \"Doc sample team\",\n    \"id\": \"3074457362577833142\"\n  },\n  \"createdBy\": {\n    \"type\": \"user\",\n    \"name\": \"John Smith\",\n    \"id\": \"3074457362577955221\"\n  },\n  \"scopes\": [\n    \"boards:write\",\n    \"boards:read\"\n  ],\n  \"organization\": {\n    \"type\": \"organization\",\n    \"name\": \"Doc sample team\",\n    \"id\": \"3074457363786315310\"\n  },\n  \"user\": {\n    \"type\": \"user\",\n    \"name\": \"John Smith\",\n    \"id\": \"3974457362577957221\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "oAuthToken"
+                    },
+                    "team": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "team"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Doc sample team"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457362577833142"
+                        }
+                      }
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "John Smith"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457362577955221"
+                        }
+                      }
+                    },
+                    "scopes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "boards:write"
+                      }
+                    },
+                    "organization": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "organization"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Doc sample team"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3074457363786315310"
+                        }
+                      }
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "user"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "John Smith"
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "3974457362577957221"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/oauth/revoke": {
+      "post": {
+        "summary": "Revoke token",
+        "description": "Revoking an access token means that the access token will no longer work. When an access token is revoked, the refresh token is also revoked and no longer valid. This does not uninstall the application for the user.",
+        "operationId": "revoke-token",
+        "parameters": [
+          {
+            "name": "access_token",
+            "in": "query",
+            "description": "Paste the access token that you want to revoke.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "No Content"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}
